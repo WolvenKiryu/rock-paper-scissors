@@ -17,11 +17,9 @@ function getHumanChoice() {
     return humanChoice;
 }
 
-// Assign the functions above to variables
+// Initialize variables to be used in the main function below
 let computerSelection;
 let humanSelection;
-
-// Initialize scoring and round variables
 let humanScore = 0;
 let computerScore = 0;
 let roundNum = 1;
