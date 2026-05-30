@@ -30,11 +30,9 @@ function playGame() {
     // Loop the game through five separate rounds
     // Call upon the choice functions each round
     for (i = 0; i < 5; i++) {
-        if (roundNum <= 5) {
-            computerSelection = getComputerChoice();
-            humanSelection = getHumanChoice();
-            playRound(humanSelection, computerSelection);
-        }
+        computerSelection = getComputerChoice();
+        humanSelection = getHumanChoice();
+        playRound(humanSelection, computerSelection);
     }
 
     // Main gameplay logic using the choices from above
