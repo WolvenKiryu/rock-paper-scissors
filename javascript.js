@@ -24,16 +24,30 @@ let humanScore = 0;
 let computerScore = 0;
 let roundNum = 1;
 
+
 // Main gameplay logic
 function playGame() {
 
-    // Loop the game through five separate rounds
-    // Call upon the choice functions each round
-    for (i = 0; i < 5; i++) {
+    const rockBtn = document.querySelector("#rock");
+    const papBtn = document.querySelector("#paper");
+    const sciBtn = document.querySelector("#scissors");
+
+    rockBtn.addEventListener("click", () => {
+        humanSelection = "rock";
         computerSelection = getComputerChoice();
-        humanSelection = getHumanChoice();
         playRound(humanSelection, computerSelection);
-    }
+    });
+    papBtn.addEventListener("click", () => {
+        humanSelection = "paper";
+        computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    });
+    sciBtn.addEventListener("click", () => {
+        humanSelection = "scissors";
+        computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    });
+        
 
     // Main gameplay logic using the choices from above
     function playRound(humanChoice, computerChoice) {
