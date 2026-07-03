@@ -24,14 +24,19 @@ let humanScore = 0;
 let computerScore = 0;
 let roundNum = 1;
 
+const result = document.querySelector("#result");
+const playerText = document.querySelector("#playerText");
+const computerText = document.querySelector("#computerText");
+const rockBtn = document.querySelector("#rock");
+const papBtn = document.querySelector("#paper");
+const sciBtn = document.querySelector("#scissors");
+const humanWins = document.querySelector("#humanWins");
+const computerWins = document.querySelector("#computerWins");
 
 // Main gameplay logic
 function playGame() {
 
-    const rockBtn = document.querySelector("#rock");
-    const papBtn = document.querySelector("#paper");
-    const sciBtn = document.querySelector("#scissors");
-
+    // Make Buttons Initiate Game
     rockBtn.addEventListener("click", () => {
         humanSelection = "rock";
         computerSelection = getComputerChoice();
@@ -52,11 +57,11 @@ function playGame() {
     // Main gameplay logic using the choices from above
     function playRound(humanChoice, computerChoice) {
         humanChoice = humanChoice.toLowerCase()
-        console.log("----- Round " + roundNum + " -----");
-        console.log("You threw... " + humanChoice + "!");
-        console.log("The computer threw... " + computerChoice + "!");
+        playerText.textContent = "Player threw... " + humanChoice + "!";
+        computerText.textContent = "The computer threw... " + computerChoice + "!";
+
         if (humanChoice === computerChoice) {
-            console.log("It's a tie! You both chose " +  humanChoice + "!");
+            result.textContent = "It's a tie! You both chose " +  humanChoice + "!";
         }
         else {
             if (humanChoice === "rock") {
@@ -84,15 +89,15 @@ function playGame() {
         }
         function win() {
             humanScore++;
-            console.log("You won! " + humanChoice + " beats " + computerChoice + "!")
-            console.log("Your score: " + humanScore);
-            console.log("Computer score: " + computerScore);
+            result.textContent = "You won! " + humanChoice + " beats " + computerChoice + "!";
+            humanWins.textContent = humanScore;
+            computerWins.textContent = computerScore;
         }
         function lose() {
             computerScore++;
-            console.log("You lost! " + computerChoice + " beats " + humanChoice + "!")
-            console.log("Your score: " + humanScore);
-            console.log("Computer score: " + computerScore);
+            result.textContent = "You lost! " + computerChoice + " beats " + humanChoice + "!";
+            humanWins.textContent = humanScore;
+            computerWins.textContent = computerScore;
         }
         roundNum++;
     }
