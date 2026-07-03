@@ -11,11 +11,6 @@ function getComputerChoice() {
     }
 }
 
-// Allow player to choose their choice via a text prompt
-function getHumanChoice() {
-    let humanChoice = prompt("Quick! Rock, paper, or scissors!?")
-    return humanChoice;
-}
 
 // Initialize variables to be used in the main function below
 let computerSelection;
@@ -23,7 +18,10 @@ let humanSelection;
 let humanScore = 0;
 let computerScore = 0;
 let roundNum = 1;
+let replay = false;
 
+
+// Initialize variables for DOM elements
 const result = document.querySelector("#result");
 const playerText = document.querySelector("#playerText");
 const computerText = document.querySelector("#computerText");
@@ -32,6 +30,8 @@ const papBtn = document.querySelector("#paper");
 const sciBtn = document.querySelector("#scissors");
 const humanWins = document.querySelector("#humanWins");
 const computerWins = document.querySelector("#computerWins");
+const buttonHolder = document.querySelector("#buttonHolder");
+
 
 // Main gameplay logic
 function playGame() {
@@ -89,17 +89,55 @@ function playGame() {
         }
         function win() {
             humanScore++;
+            humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
             result.textContent = "You won! " + humanChoice + " beats " + computerChoice + "!";
             humanWins.textContent = humanScore;
             computerWins.textContent = computerScore;
         }
         function lose() {
             computerScore++;
+            computerChoice = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
             result.textContent = "You lost! " + computerChoice + " beats " + humanChoice + "!";
             humanWins.textContent = humanScore;
             computerWins.textContent = computerScore;
         }
         roundNum++;
+
+        // Add a replay feature
+        if (humanScore === 5 || computerScore === 5) {
+            rockBtn.style.display = "none";
+            papBtn.style.display = "none";
+            sciBtn.style.display = "none";
+            if (humanScore > computerScore) {
+                result.textContent = "You win the game!";
+            }
+            else {
+                result.textContent = "The computer won the game...";
+            }
+            if (replay === false) {
+                replayBtn = document.createElement("button");
+                replayBtn.textContent = "Play again!";
+                replayBtn.addEventListener("click", () => {
+                    humanScore = 0;
+                    computerScore = 0;
+                    replayBtn.style.display = "none";
+                    rockBtn.style.display = "inline-block";
+                    papBtn.style.display = "inline-block";
+                    sciBtn.style.display = "inline-block";
+                    humanWins.textContent = 0;
+                    computerWins.textContent = 0;
+                    result.textContent = "Time for another round!";
+                    playerText.textContent = "Rock, Paper, or Scissors...?";
+                    computerText.textContent = "Click a button below to begin!";
+                    roundNum = 0;
+                });
+                buttonHolder.appendChild(replayBtn);
+                replay = true;
+            }
+            else {
+                replayBtn.style.display = "inline-block";
+            }
+        }
     }
 }
 
