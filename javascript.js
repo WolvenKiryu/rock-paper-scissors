@@ -31,6 +31,7 @@ const sciBtn = document.querySelector("#scissors");
 const humanWins = document.querySelector("#humanWins");
 const computerWins = document.querySelector("#computerWins");
 const buttonHolder = document.querySelector("#buttonHolder");
+const roundCount = document.querySelector("#roundCount");
 
 
 // Main gameplay logic
@@ -102,6 +103,7 @@ function playGame() {
             computerWins.textContent = computerScore;
         }
         roundNum++;
+        roundCount.textContent = "Round #" +roundNum;
 
         // Add a replay feature
         if (humanScore === 5 || computerScore === 5) {
@@ -129,7 +131,8 @@ function playGame() {
                     result.textContent = "Time for another round!";
                     playerText.textContent = "Rock, Paper, or Scissors...?";
                     computerText.textContent = "Click a button below to begin!";
-                    roundNum = 0;
+                    roundCount.textContent = "Round #1";
+                    roundNum = 1;
                 });
                 buttonHolder.appendChild(replayBtn);
                 replay = true;

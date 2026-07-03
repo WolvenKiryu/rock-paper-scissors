@@ -1,0 +1,54 @@
+html {
+    background-color: #242435;
+}
+
+#resultHolder {
+    width: 80%;
+    padding: 20px;
+    background-color: #4c4c7f;
+    border-radius: 15px;
+    margin: 30px auto;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+}
+
+#resultHolder h1 {
+    margin: 25px 0px 0px;
+}
+
+#roundCount {
+    position: absolute;
+    margin: 0px;
+}
+
+#buttonHolder {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: #2f2f67;
+    font-size: 20px;
+    border: 0px;
+    box-shadow: 0 5px 5px #242435;
+}
+
+
+#scoreHolder {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#scoreHolder p {
+    margin: 0px;
+    padding: 10px;
+    background-color: #242435;
+    border-radius: 10px;
+}
